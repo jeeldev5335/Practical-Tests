@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .container {
+            padding: 0 6px;
+            float: left;
+            width: 24%;
+        }
+
+        div.gallery {
+            border: 1px solid #ccc;
+        }
+
+        div.gallery:hover {
+            border: 2px solid seagreen;
+        }
+
+        img {
+            width: 99.9%;
+            /* width: 300px; */
+            height: 250px;
+        }
+
+        .text {
+            text-align: center;
+        }
+
+        @media only screen and (max-width:900px) {
+            .container {
+                width: 50%;
+                padding: 20px;
+            }
+        }
+
+        @media only screen and (max-width:390px) {
+            .container {
+                width: 100%;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <div class="container">
+            <div class="gallery">
+                <a href="https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                    target="_blank">
+                    <img src="/images/Morpinch.jpg" alt="Morpinch">
+                </a>
+                <div class="text">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="gallery">
+                <a href="https://images.unsplash.com/photo-1541963463532-d68292c34b19?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8&w=1000&q=80"
+                    target="_blank">
+                    <img src="/images/Book.jpg" alt="Morpinch">
+                </a>
+                <div class="text">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="gallery">
+                <a href="https://funkylife.in/wp-content/uploads/2022/04/funkylife-good-night-image-55.jpg"
+                    target="_blank">
+                    <img src="/images/Flower.jpg" alt="Morpinch">
+                </a>
+                <div class="text">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="gallery">
+                <a href="https://i.pinimg.com/474x/01/88/dc/0188dc41881e0e410b5375cdead5f49a.jpg" target="_blank">
+                    <img src="/images/Bike.jpg" alt="Morpinch">
+                </a>
+                <div class="text">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

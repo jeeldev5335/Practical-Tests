@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table With css</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+        }
+        .container{
+            display: grid;
+            width: 800px;
+            gap: 10px;
+            background-color: #2196F3;
+            padding: 10px;
+        }
+
+        .container div{
+            background-color: rgba(255, 255, 255, 0.8);
+            text-align: center;
+            padding: 20px 0;
+            font-size: 30px;
+        }
+
+        .item1{
+            grid-column: 1 / span 7;
+        }
+
+        .item2{
+            grid-row: 2 / span 2;
+        }
+
+        .item3{
+            grid-column: 2 / span 3;
+        }
+
+        .item4{
+            grid-column: 5 / span 3;
+        }
+
+        .item5{
+            grid-column: 2 / span 6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="item1">Header</div>
+        <div class="item2">Menu</div>
+        <div class="item3">Main</div>
+        <div class="item4">Right</div>
+        <div class="item5">Footer</div>
+    </div>
+</body>
+</html>

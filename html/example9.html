@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>row/column layout</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body{
+            margin: 0;
+        }
+
+        .column {
+            float: left;
+            width: 32%;
+            margin: 5px;
+            padding: 10px;
+            border: 1px solid seagreen;
+        }
+
+        .row:after{
+            content: "";
+        }
+
+        @media (max-width:900px){
+            .column{
+            width: 48%;
+            padding: 10px;
+            }
+        }
+
+        @media (max-width:390px){
+            .column{
+            width: 98%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="row">
+        <div class="column">
+            <h1>Heading1</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat autem cum nisi beatae reiciendis, in
+                incidunt, placeat repudiandae atque exercitationem laborum totam similique quo modi quos inventore
+                voluptate ea, ullam odio sed vel numquam mollitia consequatur. Et quis cumque assumenda distinctio,
+                impedit nemo veritatis praesentium.</p>
+        </div>
+        <div class="column">
+            <h1>Heading2</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat autem cum nisi beatae reiciendis, in
+                incidunt, placeat repudiandae atque exercitationem laborum totam similique quo modi quos inventore
+                voluptate ea, ullam odio sed vel numquam mollitia consequatur. Et quis cumque assumenda distinctio,
+                impedit nemo veritatis praesentium.</p>
+        </div>
+        <div class="column">
+            <h1>Heading3</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat autem cum nisi beatae reiciendis, in
+                incidunt, placeat repudiandae atque exercitationem laborum totam similique quo modi quos inventore
+                voluptate ea, ullam odio sed vel numquam mollitia consequatur. Et quis cumque assumenda distinctio,
+                impedit nemo veritatis praesentium.</p>
+        </div>
+    </div>
+</body>
+
+</html>

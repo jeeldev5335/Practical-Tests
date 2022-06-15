@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example 3</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            max-width: 800px;
+            margin: 10px auto;
+        }
+
+        body {
+            background-color: white;
+        }
+
+        .header,
+        .footer {
+            background-color: grey;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+
+        .clearfix {
+            display: flex;
+        }
+
+        ul {
+            padding: 0;
+            list-style-type: none;
+        }
+
+        .left.menu ul li {
+            height: 30px;
+            width: 250px;
+            background: blue;
+            margin: 10px;
+            display: flex;
+            align-items: center;
+            color: #ffffff;
+            padding-left: 10px;
+        }
+
+        .left.menu ul li:hover {
+            background: red;
+        }
+
+
+        .left.content {
+            margin-left: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <h1>India</h1>
+    </header>
+    <main class="clearfix">
+        <div class="left menu">
+            <ul>
+                <li>The Flight</li>
+                <li>The City</li>
+                <li>The Food</li>
+                <li>etc..</li>
+            </ul>
+        </div>
+        <div class="left content">
+            <h1>India</h1>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci, vero? Molestiae tempora minima
+                rerum
+                in ducimus quam illum voluptatibus sunt hic fugit sequi consequuntur quidem natus vel, libero sit
+                nihil.
+            </p>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatum, aliquam neque! Deserunt?</p>
+
+        </div>
+    </main>
+    <footer class="footer">
+        <h3>This is the Footer</h3>
+    </footer>
+</body>
+
+</html>

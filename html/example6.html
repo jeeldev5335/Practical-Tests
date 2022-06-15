@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drop Down Menu</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+        }
+
+        .dropdown{
+            position: absolute;
+        }
+
+        .dropdown-button{
+            position: relative;
+            background-color: royalblue;
+            min-width: 132px;
+            padding: 7px;
+            border: 0;
+        }
+
+        .dropdown-link{
+            display: none;
+        }
+
+        .dropdown-link a{
+            text-decoration: none;
+            display: block;
+            background-color: bisque;
+            color: black;
+            text-align: center;
+            padding: 7px;
+        }
+
+        .dropdown-link a:hover{
+            background-color: #f1f1f1;
+        }
+
+        .dropdown:hover .dropdown-button{
+            background-color: blue;
+        }
+
+        .dropdown:hover .dropdown-link {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="dropdown">
+        <div>
+            <button class="dropdown-button">Drop Down</button>
+        </div>
+        <div class="dropdown-link">
+            <a href="#">Home</a>     
+            <a href="#">About</a>     
+            <a href="#">Contect</a>     
+        </div>
+    </div>
+</body>
+</html>

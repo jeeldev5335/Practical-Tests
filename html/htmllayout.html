@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML Layout</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    header {
+      background-color: #666;
+      padding: 30px;
+      text-align: center;
+      font-size: 35px;
+      color: white;
+    }
+
+    nav {
+      float: left;
+      width: 30%;
+      height: 300px;
+      background: goldenrod;
+      padding: 20px;
+    }
+
+    nav ul{
+      list-style-type: none;
+      padding: 0;
+    }
+
+    a{
+      text-decoration: none;
+      color: whitesmoke;
+    }
+
+    article {
+      float: left;
+      padding: 20px;
+      width: 70%;
+      background-color: lightseagreen;
+      height: 300px;
+    }
+
+    section::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    footer {
+      background-color: #777;
+      padding: 10px;
+      text-align: center;
+      color: white;
+    }
+
+    @media (max-width: 600px) {
+
+      nav,
+      article {
+        width: 100%;
+        height: auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h2>Cities</h2>
+  </header>
+  <section>
+    <nav>
+      <ul>
+        <li><a href="#">Ahmedabad</a></li>
+        <li><a href="#">Vadodra</a></li>
+        <li><a href="#">Surat</a></li>
+      </ul>
+    </nav>
+
+    <article>
+      <h2>Ahmedabad</h2> <br>
+      <p>Ahmedabad is the largest city in the Gujarat state, in Western India. The city is the administrative
+        centre of Ahmedabad district, and was the capital of Gujarat from 1960 to 1970.</p> <br>
+      <p>The city is located on the banks of the Sabarmati River and it shares proximity with the Gandhinagar, the
+        newly built state capital.</p>
+    </article>
+  </section>
+  <footer>
+    <p>Ahmedabad Description</p>
+  </footer>
+</body>
+
+</html>

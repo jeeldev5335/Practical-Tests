@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rating Form</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            display: flex;
+            background: #EAECEE;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .head-img {
+            display: flex;
+            height: 40px;
+            margin: 0px 10px;
+        }
+
+        .ref {
+            display: flex;
+        }
+
+        .header a {
+            text-decoration: none;
+            padding: 11px;
+            color: black;
+        }
+
+        .header a:hover {
+            background-color: #76D7C4;
+            color: white;
+        }
+
+        .section {
+            display: flex;
+        }
+
+        .arrow {
+            border: solid black;
+            border-width: 0 3px 3px 0;
+            display: inline-block;
+            padding: 3px;
+        }
+
+        .right {
+            transform: rotate(-45deg);
+        }
+
+        .left {
+            transform: rotate(135deg);
+        }
+
+        .image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-right: 2px solid;
+            width: 50%;
+        }
+
+        .main-img {
+            height: 250px;
+        }
+
+        .description {
+            width: 50%;
+            padding: 20px;
+        }
+
+        hr {
+            background: #000;
+        }
+
+        .rate {
+            display: flex;
+        }
+
+        .rating {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 50%;
+            align-items: center;
+            border-right: 2px solid;
+        }
+
+        .star {
+            padding: 10px;
+        }
+
+        .checked {
+            color: orange;
+        }
+
+        .index {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            width: 50%;
+            padding: 10px;
+        }
+
+        .review {
+            display: flex;
+            justify-content: center;
+            padding: 0px 0px 15px 0px;
+        }
+
+        .button {
+            display: flex;
+            justify-content: center;
+        }
+
+        button {
+            border: none;
+            background: lightgreen;
+            padding: 10px 20px;
+        }
+
+        button:hover{
+            background: green;
+        }
+
+        .input {
+            padding: 20px;
+        }
+
+        textarea {
+            width: 60%;
+        }
+
+        @media (max-width:900px) {
+            .section {
+                display: block;
+            }
+
+            .image {
+                width: 100%;
+                border: none;
+            }
+
+            .description {
+                width: 100%;
+            }
+
+            .rate {
+                display: block;
+            }
+
+            .rating {
+                width: 100%;
+                border: none;
+            }
+
+            .index {
+                width: 100%;
+            }
+        }
+
+        @media (max-width:420px) {
+
+            .header,
+            .ref {
+                display: block;
+                text-align: center;
+            }
+
+            .logo {
+                display: flex;
+                justify-content: center;
+                width: 100%;
+            }
+
+            a {
+                display: block;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <img src="/images/Flipkart_logo_PNG1.png" alt="Flipkart" class="head-img">
+            </div>
+            <div class="ref">
+                <a href="#">Home</a>
+                <a href="#">About</a>
+                <a href="#">Contect</a>
+                <a href="#">Help</a>
+            </div>
+        </div>
+        <div class="section">
+            <div class="image">
+                <i class="arrow left"></i>
+                <img src="/images/Iphone 13 pro max.jpg" alt="iphone 13 pro max" class="main-img">
+                <i class="arrow right"></i>
+            </div>
+            <div class="description">
+                <h2>Iphone 13 Pro Max</h2>
+                <p>The iPhone 13 Pro Max is Apple's biggest phone in the lineup with a massive, 6.7" screen that for the
+                    first time in an iPhone comes with 120Hz ProMotion display that ensures super smooth scrolling. The
+                    benefit of such a gigantic phone is that it also comes with the biggest battery of all iPhone 13
+                    series. Apple also introduces improvements to all three cameras on the Pro Max, the wide, ultra-wide
+                    and telephoto zoom ones, but there is no periscope style long-range zoom like on many Android
+                    phones.</p>
+            </div>
+        </div>
+        <hr>
+        <div class="rate">
+            <div class="rating">
+                <h2>Ratings</h2>
+                <div class="star">
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                </div>
+                <div class="star">
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                </div>
+                <div class="star">
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                </div>
+                <div class="star">
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                </div>
+                <div class="star">
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                    <!-- <span><strong>1</strong></span> -->
+                </div>
+            </div>
+            <div class="index">
+                <div class="input">
+                    <strong>1.Rahi Patel</strong>
+                    <p>
+                        This product is duplicate of iPhone 12 only camera design changed. Very low quality of this
+                        product Buy Samsung mobile phone
+                    </p>
+                    <hr>
+                    <strong>2.Jignesh Thakor</strong>
+                    <p>
+                        There was a hairline scratch on the screen which is not clearly visible directly. When we tried
+                        contacting Amazon for the replacement, they asked us to connect to apple and when connected to
+                        apple, they asked to connect with Amazon. Blame game begins and we end up paying the price.
+                        Awfull service. I am going to tag on the social media both Amazon and apple. Such a big scam
+                    </p>
+                    <hr>
+                </div>
+                <div class="review">
+                    <textarea name="review" id="review" cols="30" rows="10" style="resize: none;"
+                        placeholder="Enter The Review...."></textarea>
+                </div>
+                <div class="button">
+                    <button>Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

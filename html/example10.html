@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive layout</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial;
+            padding: 10px;
+            background: #f1f1f1;
+        }
+
+        .header {
+            text-align: center;
+            background-color: white;
+            padding: 20px;
+        }
+
+        .nav {
+            display: flex;
+            background-color: #333;
+            justify-content: space-between;
+            padding: 10px;
+        }
+
+        .nav a {
+            padding: 11px 15px;
+            color: white;
+            text-decoration: none;
+        }
+
+        .nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .leftcolumn {
+            width: 75%;
+        }
+
+        .rightcolumn {
+            width: 25%;
+        }
+
+        .section {
+            display: flex;
+            margin: 20px -10px;
+        }
+
+        .size {
+            background-color: white;
+            margin: 10px;
+            padding: 20px;
+        }
+
+        .fakeimg {
+            width: 100%;
+            background: #aaa;
+            padding: 20px;
+        }
+
+        .first {
+            height: 200px;
+        }
+
+        .second {
+            height: 100px;
+        }
+
+        .footer {
+            display: flex;
+            justify-content: center;
+            background-color: grey;
+            padding: 10px;
+            margin-top: 20px;
+        }
+
+        @media (max-width:800px) {
+            .section {
+                display: block;
+            }
+
+            .leftcolumn,
+            .rightcolumn {
+                width: 100%;
+            }
+
+        }
+
+        @media(max-width:480px) {
+            .nav {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .nav-left,
+            .nav-right {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .nav-left a,
+            .nav-right a {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="head">
+            <div class="header">
+                <h1>My First Website</h1>
+                <p>Resize the browser window to see the effect.</p>
+            </div>
+            <div class="nav">
+                <div class="nav-left">
+                    <a href="#">Home</a>
+                    <a href="#">About</a>
+                    <a href="#">Contect Us</a>
+                </div>
+                <div class="nav-right">
+                    <a href="https://google.com" target="_blank">Help</a>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="leftcolumn">
+                <div class="size">
+                    <h2>TITLE HEADING</h2>
+                    <h5>description, May 14, 2022</h5>
+                    <div class="fakeimg first">Image</div>
+                    <p>Some text..</p>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quas libero, asperiores optio et nemo
+                        tenetur assumenda tempora laborum veritatis molestias inventore dicta eos quidem. Voluptate
+                        praesentium rem totam possimus soluta.
+                    </p>
+                </div>
+                <div class="size">
+                    <h2>TITLE HEADING</h2>
+                    <h5>description, May 14, 2022</h5>
+                    <div class="fakeimg first">Image</div>
+                    <p>Some text..</p>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quas libero, asperiores optio et nemo
+                        tenetur assumenda tempora laborum veritatis molestias inventore dicta eos quidem. Voluptate
+                        praesentium rem totam possimus soluta.
+                    </p>
+                </div>
+            </div>
+            <div class="rightcolumn">
+                <div class="size">
+                    <h2>About Me</h2>
+                    <div class="fakeimg second">Image</div>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ex, repudiandae.</p>
+                </div>
+                <div class="size">
+                    <h2>Popular Post</h2>
+                    <div class="fakeimg">
+                        <p>Image</p>
+                    </div>
+                    <div class="fakeimg">
+                        <p>Image</p>
+                    </div>
+                    <div class="fakeimg">
+                        <p>Image</p>
+                    </div>
+                </div>
+                <div class="size">
+                    <h2>Follow Me</h2>
+                    <p>Some text..</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <h1>Footer</h1>
+        </div>
+    </div>
+</body>
+
+</html>

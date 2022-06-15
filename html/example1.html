@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>simple form</title>
+    <style>
+        table {
+            border: 2px solid whitesmoke;
+            padding: 10px;
+        }
+
+        th {
+            text-align: left;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            color: grey;
+        }
+
+        tr:nth-child(even) {
+            height: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <table align="center">
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+        </tr>
+        <tr>
+            <td style="width: 190px;">
+                <input type="text" id="fname" name="fname" />
+            </td>
+            <td>
+                <input type="text" id="lname" name="lname" />
+            </td>
+        </tr>
+        <tr>
+            <th>Email Address</th>
+            <th>Phone Number</th>
+        </tr>
+        <tr>
+            <td>
+                <input type="email" id="email" name="email" />
+            </td>
+            <td>
+                <input type="tel" id="phone" name="phone" pattern="[1-9]{1}[0-9]{9}" maxlength="10" />
+            </td>
+        </tr>
+        <tr>
+            <th>Address</th>
+            <th>City</th>
+        </tr>
+        <tr>
+            <td>
+                <input type="text" id="address" name="address" />
+            </td>
+            <td>
+                <input type="text" id="city" name="city" />
+            </td>
+        </tr>
+        <tr>
+            <th>State</th>
+            <th>Zipcode</th>
+        </tr>
+        <tr>
+            <td>
+                <select name="state" id="state"
+                    style="width: 170px; height: 21.5px; font-family: Verdana, Geneva, Tahoma, sans-serif;">
+                    <option value="select" selected>Select</option>
+                    <option value="india">India</option>
+                    <option value="usa">USA</option>
+                    <option value="canada">Canada</option>
+                </select>
+            </td>
+            <td>
+                <input type="text" id="zipcode" name="zipcode" pattern="[1-9]{1}" />
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>

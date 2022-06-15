@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        .colour{
+            color: red;
+        }
+        /* body {
+            background-image: url('../images/wall3.jfif');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 100%;
+        } */
+
+        /* td:hover{color: red;} */
+    </style>
+</head>
+
+<body>
+    <form id="form" method="POST">
+        <div align="center">
+            <fieldset style="width: 35%;">
+                <legend style="text-align: center;">Personal Info :</legend>
+                <a href="#userid">
+                    <h1>Registration Form</h1>
+                </a>
+                <table border="0">
+                    <tr>
+                        <td align="right">
+                            <label for="userid">User Id :</label>
+                        </td>
+                        <td>
+                            <input type="text" id="userid" name="userid"
+                                placeholder="Reqired and must be of length 5 to 12" style="width: 250px;" />
+                            <div id="userIdError" class="colour"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">
+                            <label for="password">password :</label>
+                        </td>
+                        <td>
+                            <input type="text" name="password" id="password"
+                                placeholder="Reqired and must be of length 7 to 12" style="width: 250px;" />
+                            <div id="passwordError" class="colour"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">
+                            <label for="name">Name :</label>
+                        </td>
+                        <td>
+                            <input type="text" name="name" id="name" placeholder="Reqired and alphabates only"
+                                style="width: 250px;" />
+                            <div id="nameError" class="colour"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">
+                            <label for="address">Address :</label>
+                        </td>
+                        <td>
+                            <input type="text" name="address" id="address" placeholder="Required"
+                                style="width: 250px;" />
+                            <div id="addressError" class="colour"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">
+                            <label for="country">Country :</label>
+                        </td>
+                        <td>
+                            <select name="country" id="country" style="width:257px">
+                                <option value="" style="text-align: center;" selected>--select--</option>
+                                <option value="india">India</option>
+                                <option value="usa">USA</option>
+                                <option value="canada">Canada</option>
+                            </select>
+                            <div id="countryError" class="colour"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">
+                            <label for="zipcode">Zip Code :</label>
+                        </td>
+                        <td>
+                            <input type="text" name="zipcode" id="zipcode"
+                                placeholder="Reqired and must be numeric only" style="width: 250px;" />
+                            <div id="zipcodeError" class="colour"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">
+                            <label for="email">Email :</label>
+                        </td>
+                        <td>
+                            <input type="email" name="email" id="email" placeholder="xyz@gmail.com"
+                                style="width: 250px;" />
+                            <div id="emailError" class="colour"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">
+                            <label for="gender">Gender :</label>
+                        </td>
+                        <td>
+                            <input type="radio" name="gender" id="gender" /> Male
+                            <input type="radio" name="gender" id="gender1" /> Female
+                            <div id="genderError" class="colour"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">
+                            <label for="language">Language :</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" name="language" id="language" value="1" /> English
+                            <input type="checkbox" name="language" id="nonLanguage" value="2" /> Non English
+                            <div id="languageError" class="colour"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right" valign="top">
+                            <label for="about">About :</label>
+                        </td>
+                        <td>
+                            <textarea name="about" id="about" cols="30" rows="10" placeholder="Required"
+                                style="width: 250px;"></textarea>
+                            <div id="aboutError" class="colour"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" align="center">
+                            <button type="button" onclick="validateForm()">Submit</button>
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+        </div>
+    </form>
+    <script>
+        function validateForm() {
+            var uid = document.getElementById("userid").value;
+            var pass = document.getElementById("password").value; 
+            var name = document.getElementById("name").value;
+            var address = document.getElementById("address").value;
+            var country = document.getElementById("country").value;
+            var zipcode = document.getElementById("zipcode").value;
+            var email = document.getElementById("email").value;
+            var gender = document.getElementById("gender").checked;
+            var gender1 = document.getElementById("gender1").checked;
+            var language = document.getElementById("language").checked;
+            var nonLanguage = document.getElementById("nonLanguage").checked;
+            var about = document.getElementById("about").value;
+
+            let isUuidValid = isPasswordValid = false;
+
+            if (uid == "") {
+                document.getElementById("userIdError").innerHTML = "Please Enter a User id";
+                isUuidValid = false;
+            } else {
+                document.getElementById("userIdError").innerHTML = "";
+                isUuidValid = true;
+            }
+
+            if(pass == ""){
+                isPasswordValid = false;
+                document.getElementById("passwordError").innerHTML = "Enter the Password";
+            } else {
+                isPasswordValid = true;
+                document.getElementById("passwordError").innerHTML = "";
+            }
+
+            if(name == ""){
+                document.getElementById("nameError").innerHTML = "Enter the Name";
+            } else {
+                document.getElementById("nameError").innerHTML = "";
+            }
+
+            if(address == ""){
+                document.getElementById("addressError").innerHTML = "Enter the Address";
+            } else {
+                document.getElementById("addressError").innerHTML = "";
+            }
+
+            if(country == ""){
+                document.getElementById("countryError").innerHTML = "Enter the Country";
+            } else {
+                document.getElementById("countryError").innerHTML = "";
+            }
+
+            if(zipcode == ""){
+                document.getElementById("zipcodeError").innerHTML = "Enter the Zipcode";
+            } else {
+                document.getElementById("zipcodeError").innerHTML = "";
+            }
+
+            if(email == ""){
+                document.getElementById("emailError").innerHTML = "Enter the Email";
+            } else {
+                document.getElementById("emailError").innerHTML = "";
+            }
+
+            if(!gender && !gender1){
+                document.getElementById("genderError").innerHTML = "Enter the Gender";
+            } else {
+                document.getElementById("genderError").innerHTML = "";
+            }
+
+            if(!language && !nonLanguage){
+                document.getElementById("languageError").innerHTML = "Please select atleast one";
+            } else {
+                document.getElementById("languageError").innerHTML = "";
+            }
+
+            if(about == ""){
+                document.getElementById("aboutError").innerHTML = "Enter the About";
+            } else {
+                document.getElementById("aboutError").innerHTML = "";
+            }
+
+            if(isUuidValid && isPasswordValid) {
+                const obj = {
+                    uid,
+                    pass
+
+                };
+                console.log('datasdfasa', obj);
+            } else {
+                return false;
+            }
+        }
+    </script>
+</body>
+
+</html>

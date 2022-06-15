@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flex Box Example</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+            display: inline-block;
+            margin: 0px 8px;
+        }
+
+        nav {
+            background-color: white;
+            color: black;
+            border: 2px solid red;
+        }
+
+        div.center {
+            display: flex;
+            align-items: center;
+        }
+
+        .left {
+            float: left;
+            background-color: aqua;
+            height: 500px;
+            width: 50%;
+        }
+
+        .right {
+            float: right;
+            background-color: violet;
+            height: 500px;
+            width: 50%;
+        }
+
+        body{
+            background-color: green;
+        }
+
+        @media (max-width: 900px) {
+            body {
+                background-color: yellow;
+            }
+        }
+
+        @media (max-width: 390px) {
+            body {
+                background-color: red;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <!-- <div>
+            <img src="/images/username.jpg" alt="username" height="35px">
+        </div> -->
+            <div class="center">
+                <img src="/images/username.jpg" alt="username" height="35px">
+                <ul>
+                    <li>home</li>
+                    <li>about</li>
+                    <li>contact us</li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <section>
+        <div class="left">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem accusamus dolorum sed
+            quos voluptatum asperiores facilis beatae nobis deserunt amet optio in repellendus natus, labore eos
+            veritatis. Odit voluptatem blanditiis accusantium excepturi. Ullam excepturi delectus amet iusto adipisci
+            enim recusandae quis reprehenderit. Accusamus ipsam reiciendis, cumque nulla quisquam velit quasi eligendi,
+            neque fugiat numquam porro quis fuga tenetur ullam illo voluptates. Excepturi libero, molestiae cumque sint
+            mollitia explicabo aspernatur corporis placeat repellat vitae saepe, ea dicta illum dignissimos praesentium
+            obcaecati provident blanditiis error ipsam rerum voluptatum ipsa corrupti! Numquam dignissimos cumque
+            eligendi ad iure. 
+        </div>
+        <div class="right">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla esse nesciunt fugit deleniti dolor
+            blanditiis
+            possimus laboriosam deserunt odit voluptas natus, sed consectetur alias amet nihil. Vero ratione dolorum
+            provident.
+        </div>
+    </section>
+</body>
+
+</html>
