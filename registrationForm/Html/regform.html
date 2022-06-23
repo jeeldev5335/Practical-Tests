@@ -6,48 +6,61 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration Form</title>
+    <script src="../JavaScript/validation.js"></script>
     <style>
         .colour{
             color: red;
         }
-        /* body {
-            background-image: url('../images/wall3.jfif');
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-size: 100% 100%;
+        tr {
+            vertical-align: top;
+        }
+
+        /* input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
         } */
 
-        /* td:hover{color: red;} */
     </style>
 </head>
 
 <body>
-    <form id="form" method="POST">
+    <form id="form" method="POST" onsubmit="return false">
         <div align="center">
             <fieldset style="width: 35%;">
                 <legend style="text-align: center;">Personal Info :</legend>
-                <a href="#userid">
+                <a href="#username">
                     <h1>Registration Form</h1>
                 </a>
                 <table border="0">
                     <tr>
                         <td align="right">
-                            <label for="userid">User Id :</label>
+                            <label for="username">User Name :</label>
                         </td>
                         <td>
-                            <input type="text" id="userid" name="userid"
+                            <input type="text" id="username" name="username"
                                 placeholder="Reqired and must be of length 5 to 12" style="width: 250px;" />
-                            <div id="userIdError" class="colour"></div>
+                            <div id="usernameError" class="colour"></div>
                         </td>
                     </tr>
                     <tr>
                         <td align="right">
-                            <label for="password">password :</label>
+                            <label for="password">Password :</label>
                         </td>
                         <td>
                             <input type="text" name="password" id="password"
-                                placeholder="Reqired and must be of length 7 to 12" style="width: 250px;" />
+                                placeholder="Reqired and must be of length 8 to 12" style="width: 250px;" />
                             <div id="passwordError" class="colour"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">
+                            <label for="confirmpassword">Confirm Password :</label>
+                        </td>
+                        <td>
+                            <input type="text" name="confirmpassword" id="confirmpassword"
+                                placeholder="Reqired and must be of length 7 to 12" style="width: 250px;" />
+                            <div id="confirmpasswordError" class="colour"></div>
                         </td>
                     </tr>
                     <tr>
@@ -89,9 +102,19 @@
                             <label for="zipcode">Zip Code :</label>
                         </td>
                         <td>
-                            <input type="text" name="zipcode" id="zipcode"
+                            <input type="text" name="zipcode" id="zipcode" maxlength="6" minlength="5" pattern="[1-9]{1}[0-9]{5}"
                                 placeholder="Reqired and must be numeric only" style="width: 250px;" />
                             <div id="zipcodeError" class="colour"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">
+                            <label for="phone">Phone no :</label>
+                        </td>
+                        <td>
+                            <input type="tel" name="phone" id="phone" maxlength="10" pattern="[1-9]{1}[0-9]{9}"
+                                placeholder="Reqired and must be numeric only" style="width: 250px;" />
+                            <div id="phoneError" class="colour"></div>
                         </td>
                     </tr>
                     <tr>
@@ -109,8 +132,8 @@
                             <label for="gender">Gender :</label>
                         </td>
                         <td>
-                            <input type="radio" name="gender" id="gender" /> Male
-                            <input type="radio" name="gender" id="gender1" /> Female
+                            <input type="radio" name="gender" id="gender" value="Male" /> <label for="gender">Male</label>
+                            <input type="radio" name="gender" id="gender1" value="Female" /> <label for="gender1">Female</label>
                             <div id="genderError" class="colour"></div>
                         </td>
                     </tr>
@@ -119,14 +142,14 @@
                             <label for="language">Language :</label>
                         </td>
                         <td>
-                            <input type="checkbox" name="language" id="language" value="1" /> English
-                            <input type="checkbox" name="language" id="nonLanguage" value="2" /> Non English
+                            <input type="checkbox" name="language" id="language" value="english" /> <label for="language">English</label>
+                            <input type="checkbox" name="language" id="nonLanguage" value="nonEnglish" /> <label for="nonLanguage">Non English</label>
                             <div id="languageError" class="colour"></div>
                         </td>
                     </tr>
                     <tr>
                         <td align="right" valign="top">
-                            <label for="about">About :</label>
+                            <label for="about">Description :</label>
                         </td>
                         <td>
                             <textarea name="about" id="about" cols="30" rows="10" placeholder="Required"
@@ -143,99 +166,6 @@
             </fieldset>
         </div>
     </form>
-    <script>
-        function validateForm() {
-            var uid = document.getElementById("userid").value;
-            var pass = document.getElementById("password").value; 
-            var name = document.getElementById("name").value;
-            var address = document.getElementById("address").value;
-            var country = document.getElementById("country").value;
-            var zipcode = document.getElementById("zipcode").value;
-            var email = document.getElementById("email").value;
-            var gender = document.getElementById("gender").checked;
-            var gender1 = document.getElementById("gender1").checked;
-            var language = document.getElementById("language").checked;
-            var nonLanguage = document.getElementById("nonLanguage").checked;
-            var about = document.getElementById("about").value;
-
-            let isUuidValid = isPasswordValid = false;
-
-            if (uid == "") {
-                document.getElementById("userIdError").innerHTML = "Please Enter a User id";
-                isUuidValid = false;
-            } else {
-                document.getElementById("userIdError").innerHTML = "";
-                isUuidValid = true;
-            }
-
-            if(pass == ""){
-                isPasswordValid = false;
-                document.getElementById("passwordError").innerHTML = "Enter the Password";
-            } else {
-                isPasswordValid = true;
-                document.getElementById("passwordError").innerHTML = "";
-            }
-
-            if(name == ""){
-                document.getElementById("nameError").innerHTML = "Enter the Name";
-            } else {
-                document.getElementById("nameError").innerHTML = "";
-            }
-
-            if(address == ""){
-                document.getElementById("addressError").innerHTML = "Enter the Address";
-            } else {
-                document.getElementById("addressError").innerHTML = "";
-            }
-
-            if(country == ""){
-                document.getElementById("countryError").innerHTML = "Enter the Country";
-            } else {
-                document.getElementById("countryError").innerHTML = "";
-            }
-
-            if(zipcode == ""){
-                document.getElementById("zipcodeError").innerHTML = "Enter the Zipcode";
-            } else {
-                document.getElementById("zipcodeError").innerHTML = "";
-            }
-
-            if(email == ""){
-                document.getElementById("emailError").innerHTML = "Enter the Email";
-            } else {
-                document.getElementById("emailError").innerHTML = "";
-            }
-
-            if(!gender && !gender1){
-                document.getElementById("genderError").innerHTML = "Enter the Gender";
-            } else {
-                document.getElementById("genderError").innerHTML = "";
-            }
-
-            if(!language && !nonLanguage){
-                document.getElementById("languageError").innerHTML = "Please select atleast one";
-            } else {
-                document.getElementById("languageError").innerHTML = "";
-            }
-
-            if(about == ""){
-                document.getElementById("aboutError").innerHTML = "Enter the About";
-            } else {
-                document.getElementById("aboutError").innerHTML = "";
-            }
-
-            if(isUuidValid && isPasswordValid) {
-                const obj = {
-                    uid,
-                    pass
-
-                };
-                console.log('datasdfasa', obj);
-            } else {
-                return false;
-            }
-        }
-    </script>
 </body>
 
 </html>

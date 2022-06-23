@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail</title>
+</head>
+<body onload="viewItem()">
+    <div align="center">
+        <fieldset style="width: 35%;">
+            <legend style="text-align: center;">Info :</legend>
+            <h1>Details</h1>
+            <table border="0" id="mainContent"> </table>
+        </fieldset>
+    </div>
+</body>
+
+<script>
+    function viewItem(){
+
+        var urlString = window.location.href;
+        var url = new URL(urlString);
+        var id = url.searchParams.get("id");
+
+        var data = localStorage.getItem("user");
+        var dataArr = JSON.parse(data);
+
+        const content = document.getElementById("mainContent");
+
+        const user = dataArr.find(element => element && element.id == id);
+
+
+        let str = `<tr>
+                    <td align="right">
+                        <label">User Name :</label>
+                    </td>
+                    <td>
+                        <div>${user['username']}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right">
+                        <label>Name :</label>
+                    </td>
+                    <td>
+                        <div>${user['name']}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right">
+                        <label>Address :</label>
+                    </td>
+                    <td>
+                        <div>${user['address']}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right">
+                        <label>Country :</label>
+                    </td>
+                    <td>
+                        <div>${user['country']}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right">
+                        <label>Zip Code :</label>
+                    </td>
+                    <td>
+                        <div>${user['zipcode']}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right">
+                        <label>Phone no :</label>
+                    </td>
+                    <td>
+                        <div>${user['phoneno']}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right">
+                        <label>Email :</label>
+                    </td>
+                    <td>
+                        <div>${user['email']}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right">
+                        <label>Gender :</label>
+                    </td>
+                    <td>
+                        <div>${user['gender']}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right">
+                        <label>Language :</label>
+                    </td>
+                    <td>
+                        <div>${user['language']}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right" valign="top">
+                        <label>Description :</label>
+                    </td>
+                    <td>
+                        <div>${user['about']}</div>
+                    </td>
+                </tr>`;
+        content.innerHTML = str;
+    }
+</script>
+
+</html>

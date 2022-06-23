@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Data</title>
+    <script src="../JavaScript/validation.js"></script>
+    <style>
+
+        .colour{
+            color: red;
+        }
+
+        tr {
+            vertical-align: top;
+        }
+
+    </style>
+
+</head>
+<body onload="displayItem()">
+    <form id="form" method="POST" onsubmit="return false">
+        <div align="center">
+            <fieldset style="width: 35%;">
+                <legend style="text-align: center;">Update  :</legend>
+                <h1>Details</h1>
+                <table border="0">
+                    <tr>
+                        <td align="right">
+                            <label for="username">User Name :</label>
+                        </td>
+                        <td>
+                            <input type="text" id="username" name="username" style="width: 250px;" />
+                            <div id="usernameError" class="colour"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">
+                            <label for="password">Password :</label>
+                        </td>
+                        <td>
+                            <input type="text" name="password" id="password" style="width: 250px;" disabled/>
+                            <div id="passwordError" class="colour"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">
+                            <label for="confirmpassword">Confirm Password :</label>
+                        </td>
+                        <td>
+                            <input type="text" name="confirmpassword" id="confirmpassword" style="width: 250px;" disabled/>
+                            <div id="confirmpasswordError" class="colour"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">
+                            <label for="name">Name :</label>
+                        </td>
+                        <td>
+                            <input type="text" name="name" id="name" style="width: 250px;" />
+                            <div id="nameError" class="colour"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">
+                            <label for="address">Address :</label>
+                        </td>
+                        <td>
+                            <input type="text" name="address" id="address" style="width: 250px;" />
+                            <div id="addressError" class="colour"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">
+                            <label for="country">Country :</label>
+                        </td>
+                        <td>
+                            <select name="country" id="country" style="width:257px">
+                                <option value="" style="text-align: center;" selected>--select--</option>
+                                <option value="india">India</option>
+                                <option value="usa">USA</option>
+                                <option value="canada">Canada</option>
+                            </select>
+                            <div id="countryError" class="colour"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">
+                            <label for="zipcode">Zip Code :</label>
+                        </td>
+                        <td>
+                            <input type="text" name="zipcode" id="zipcode" maxlength="6" minlength="5" pattern="[1-9]{1}[0-9]{5}"
+                                style="width: 250px;" />
+                            <div id="zipcodeError" class="colour"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">
+                            <label for="phone">Phone no :</label>
+                        </td>
+                        <td>
+                            <input type="tel" name="phone" id="phone" maxlength="10" pattern="[1-9]{1}[0-9]{9}"
+                                style="width: 250px;" />
+                            <div id="phoneError" class="colour"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">
+                            <label for="email">Email :</label>
+                        </td>
+                        <td>
+                            <input type="email" name="email" id="email" style="width: 250px;" />
+                            <div id="emailError" class="colour"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">
+                            <label for="gender">Gender :</label>
+                        </td>
+                        <td>
+                            <input type="radio" name="gender" id="gender" value="Male" /> <label for="gender">Male</label>
+                            <input type="radio" name="gender" id="gender1" value="Female" /> <label for="gender1">Female</label>
+                            <div id="genderError" class="colour"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">
+                            <label for="language">Language :</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" name="language" id="language" value="english" /> <label for="language">English</label>
+                            <input type="checkbox" name="language" id="nonLanguage" value="nonEnglish" /> <label for="nonLanguage">Non English</label>
+                            <div id="languageError" class="colour"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right" valign="top">
+                            <label for="about">Description :</label>
+                        </td>
+                        <td>
+                            <textarea name="about" id="about" cols="30" rows="10" style="width: 250px;"></textarea>
+                            <div id="aboutError" class="colour"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" align="center">
+                            <button type="button" onclick="updateForm()">Update</button>
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+        </div>
+    </form>
+
+    <script>
+
+        var urlString = window.location.href;
+        //console.log(urlString, typeof urlString);
+        var url = new URL(urlString);
+        //console.log(url , typeof url);
+        var id = url.searchParams.get("id");
+        //console.log(id);
+
+        var data = localStorage.getItem("user");
+        var dataArr = JSON.parse(data);
+
+        const user = dataArr.find(element => element && element.id == id);
+        console.log(user);
+
+        function displayItem() {
+
+            document.getElementById("username").value = user.username;
+            document.getElementById("password").value = user.password;
+            document.getElementById("confirmpassword").value = user.confirmPassword;
+            document.getElementById("name").value = user.name;
+            document.getElementById("address").value = user.address;
+            document.getElementById("country").value = user.country;
+            document.getElementById("zipcode").value = user.zipcode;
+            document.getElementById("phone").value = user.phoneno;
+            document.getElementById("email").value = user.email;
+            if(user && user.gender && user.gender.includes('Male')) {
+                document.getElementById("gender").checked = true;
+            }
+            if(user && user.gender && user.gender.includes('Female')) {
+                document.getElementById("gender1").checked = true;
+            }
+            if(user && user.language && user.language.includes('english')) {
+                document.getElementById("language").checked = true;
+            }
+            if(user && user.language && user.language.includes('nonEnglish')) {
+                document.getElementById("nonLanguage").checked = true;
+            }
+            document.getElementById("about").value = user.about;
+
+        }
+
+        function updateForm(){
+
+            var uname = document.getElementById("username").value;
+            var pass = document.getElementById("password").value;
+            var confirmPass = document.getElementById("confirmpassword").value;
+            var name = document.getElementById("name").value;
+            var address = document.getElementById("address").value;
+            var country = document.getElementById("country").value;
+            var zipcode = document.getElementById("zipcode").value;
+            var phone = document.getElementById("phone").value;
+            var email = document.getElementById("email").value;
+            var genderMale = document.getElementById("gender");
+            var genderFemale = document.getElementById("gender1");
+            var language = document.getElementById("language");
+            var nonLanguage = document.getElementById("nonLanguage");
+            var about = document.getElementById("about").value;
+
+            let isUnameValid = isPasswordValid = isconfirmPasswordValid = isNameValid = isAddressValid = isCountryValid = isZipcodeValid = isPhoneNoValid = isEmailValid = isGenderValid =  isLanguageValid = isAboutValid = false;
+
+            if (uname == "") {
+                document.getElementById("usernameError").innerHTML = "Please Enter a User id";
+                isUnameValid = false;
+            } 
+            else { 
+                if((uname.match(/[a-z]/g) || uname.match(/[0-9]/g)) || (uname.indexOf("-") !== -1 || uname.indexOf("_") !== -1)){
+                    document.getElementById("usernameError").innerHTML = "";
+                    isUnameValid = true;
+                }   
+                else{
+                    document.getElementById("usernameError").innerHTML = "Enter Valid Username";
+                    isUnameValid = false;
+                }
+            }
+
+            if(pass == ""){
+                document.getElementById("passwordError").innerHTML = "Enter the Password";
+                isPasswordValid = false;
+            } 
+            else {
+                if(pass.match(/[a-z]/g) && pass.match(/[A-Z]/g) && pass.match(/[0-9]/g) && pass.match(/[^a-zA-Z\d]/g) && pass.length >= 8){
+                    document.getElementById("passwordError").innerHTML = "";
+                    isPasswordValid = true;
+                }
+                else {
+                    document.getElementById("passwordError").innerHTML =
+`<pre>At least 1 uppercase character,
+1 lowercase character,1 digit,
+1 special character And 
+Minimum 8 caracters.</pre>`;
+                    isEmailValid = false;
+                }
+            }
+
+            if(confirmPass == ""){
+                document.getElementById("confirmpasswordError").innerHTML = "ReEnter the Password";
+                isconfirmPasswordValid = false;
+            } 
+            else if(confirmPass == pass){
+                document.getElementById("confirmpasswordError").innerHTML = "";
+                isconfirmPasswordValid = true;
+            }
+            else if(confirmPass !== pass){
+                document.getElementById("confirmpasswordError").innerHTML = "Confirm Password And Password are not same";
+                isconfirmPasswordValid = false;
+            }
+
+            if(name == ""){
+                document.getElementById("nameError").innerHTML = "Enter the Name";
+                isNameValid = false;
+            } else {
+                document.getElementById("nameError").innerHTML = "";
+                isNameValid = true;
+            }
+
+            if(address == ""){
+                document.getElementById("addressError").innerHTML = "Enter the Address";
+                isAddressValid = false;
+            } else {
+                document.getElementById("addressError").innerHTML = "";
+                isAddressValid = true;
+            }
+
+            if(country == ""){
+                document.getElementById("countryError").innerHTML = "Enter the Country";
+                isCountryValid = false;
+            } else {
+                document.getElementById("countryError").innerHTML = "";
+                isCountryValid = true;
+            }
+
+            if(zipcode == ""){
+                document.getElementById("zipcodeError").innerHTML = "Enter the Zipcode";
+                isZipcodeValid = false;
+            } 
+            else {
+                if((/^([0-9]{5,})$/.test(zipcode) && zipcode.length == 5) || (/^([0-9]{5,})$/.test(zipcode) && zipcode.length == 6)){
+                    document.getElementById("zipcodeError").innerHTML = "";
+                    isZipcodeValid = true;
+                }
+                else {
+                    document.getElementById("zipcodeError").innerHTML = 
+`<pre>Enter only Numbers and Maximum 
+5 or 6 Number is required</pre>`;
+                    isZipcodeValid = false;
+                }
+            }
+            
+            if(phone == ""){
+                document.getElementById("phoneError").innerHTML = "Enter the Phone Number";
+                isPhoneNoValid = false;
+            } 
+            else {
+                if(/^([0-9]{5,})$/.test(phone) && phone.length == 10){
+                    document.getElementById("phoneError").innerHTML = "";
+                    isPhoneNoValid = true;
+                }
+                else {
+                    document.getElementById("phoneError").innerHTML = 
+`<pre>Enter only Numbers and 
+Maximum 10 Number is required</pre>`;
+                    isPhoneNoValid = false;
+                }
+            }
+
+            if(email == ""){
+                document.getElementById("emailError").innerHTML = "Enter the Email";
+                isEmailValid = false;
+            } 
+            else {
+                if(email.indexOf("@") !== -1 && email.indexOf(".") !== -1){
+                    document.getElementById("emailError").innerHTML = "";
+                    isEmailValid = true;
+                }
+                else {
+                    document.getElementById("emailError").innerHTML = "Please Enter Valid Email";
+                    isEmailValid = false;
+                }
+            }
+
+            if(!genderMale.checked && !genderFemale.checked){
+                document.getElementById("genderError").innerHTML = "Enter the Gender";
+                isGenderValid = false;
+            } 
+            else if(genderMale.checked){
+                var x = genderMale.value;
+                document.getElementById("genderError").innerHTML = "";
+                isGenderValid = true;
+            }
+            else if(genderFemale.checked){
+                var x = genderFemale.value;
+                document.getElementById("genderError").innerHTML = "";
+                isGenderValid = true;
+            }
+            
+            if(!language.checked && !nonLanguage.checked){
+                document.getElementById("languageError").innerHTML = "Please select atleast one";
+                isLanguageValid = false;
+            } 
+            else if(language.checked && nonLanguage.checked){
+                var y = [language.value , nonLanguage.value];
+                document.getElementById("languageError").innerHTML = "";
+                isLanguageValid = true;
+            }
+            else if(language.checked){
+                var y = [language.value];
+                document.getElementById("languageError").innerHTML = "";
+                isLanguageValid = true;
+            }
+            else if(nonLanguage.checked){
+                var y = [nonLanguage.value];
+                document.getElementById("languageError").innerHTML = "";
+                isLanguageValid = true;
+            }
+
+            if(about == ""){
+                document.getElementById("aboutError").innerHTML = "Enter Some Description";
+                isAboutValid = false;
+            } else {
+                document.getElementById("aboutError").innerHTML = "";
+                isAboutValid = true;
+            }
+            
+            // console.log(isUnameValid , '&&' , isPasswordValid , '&&' , isconfirmPasswordValid , '&&' , isNameValid , '&&' , isAddressValid , '&&' , isCountryValid , '&&' , isZipcodeValid , '&&' , isPhoneNoValid , '&&' , isEmailValid , '&&' , isGenderValid , '&&' , isLanguageValid 
+            // , '&&' , isAboutValid);
+            if(isUnameValid && isPasswordValid && isconfirmPasswordValid && isNameValid && isAddressValid && isCountryValid && isZipcodeValid && isPhoneNoValid && isEmailValid && isGenderValid && isLanguageValid 
+            && isAboutValid) {
+                var oldData = localStorage.getItem("user");
+                var oldDataArr = JSON.parse(oldData);
+                //const lastElement = oldDataArr[oldDataArr.length - 1];
+                const obj = {
+                    username : uname,
+                    password : pass,
+                    confirmPassword : confirmPass,
+                    name : name,
+                    address : address,
+                    country : country,
+                    zipcode : zipcode,
+                    phoneno : phone,
+                    email : email,
+                    gender : x,
+                    language : y,
+                    about : about,
+                    id: id
+                };
+
+                //For Delete The Data
+                newDataArr = dataArr.filter(element => element && element.id != id);   
+                // localStorage.setItem('user', JSON.stringify(newDataArr)); 
+
+                newDataArr.push(obj);
+                localStorage.setItem('user', JSON.stringify(newDataArr));
+
+                //For Redirect to other form ------- here we redirect the form to view table 
+                window.location.href= 'regformtable.html';
+
+            }
+        }
+    </script>
+
+</body>
+</html>
