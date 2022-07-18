@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+
+    <!-- Bootstrap with css -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap with javascript -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"></script> -->
+
+    <script>
+        let a;
+        let date;
+        let time;
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
+        setInterval(() => {
+            a = new Date();
+            time = a.toLocaleTimeString();
+            date = a.toLocaleDateString(undefined, options);
+            document.getElementById('time').innerHTML = 'Time : ' + time + '<br>Date : ' + date;
+        }, 1000);
+    </script>
+</head>
+
+<body>
+    <div class="d-flex justify-content-center my-5">
+        <div class="card justify-content-center" style="width: 18rem;">
+            <div class="card-body">
+                <h6><span id="time"></span></h6>
+                <h5 class="card-title">Clock</h5>
+                <p class="card-text">This is the Digital Clock.</p>
+                <a href="#" class="btn btn-primary">Explore More</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

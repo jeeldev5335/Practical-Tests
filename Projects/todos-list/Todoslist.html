@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDos List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container my-4" id="container">
+        <h2 class="text-center">TODOs List</h2>
+        <div class="form-group mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" class="form-control" id="title">
+            <div id="titleHelp" class="form-text">Enter the title of description.</div>
+        </div>
+        <div class="form-group mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea class="form-control" id="description" rows="3"></textarea>
+        </div>
+        <button type="submit" id="submit" class="btn btn-primary">Submit</button>
+        <div id="items" class="my-4">
+            <h2 class="text-center">Your Items</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Sr.no</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody">
+
+                </tbody>
+            </table>
+        </div>
+
+        <script>
+            submit = document.getElementById("submit");
+            const itemJsonArray = [];
+            submit.addEventListener("click", () => {
+                const titleElem = document.getElementById("title");
+                const descriptionElem = document.getElementById("description");
+                console.log("event clicked...");
+                const tit = titleElem.value;
+                const desc = descriptionElem.value;
+                // if (localStorage.getItem('itemJson')==null) {
+                console.log(tit, desc);
+                itemJsonArray.push({ title: tit, description: desc });
+                localStorage.setItem('itemJson', JSON.stringify(itemJsonArray));
+                titleElem.value = '';
+                descriptionElem.value = '';
+                loadData();
+                // }
+            });
+
+            function loadData() {
+                let html = '';
+                const items = localStorage.getItem('itemJson');
+                const data = JSON.parse(items);
+                console.log('kkkjkjk', data);
+                for (let i = 0; i < data.length; i++) {
+                    html += `<tr>
+                        <th scope="row">${i + 1}</th>
+                        <td>${data[i].title}</td>
+                        <td>${data[i].description}</td>
+                        <td><button class="btn btn-sm btn-primary">Delete</button></td>
+                    </tr>`;
+                }
+                document.getElementById('tbody').innerHTML = html;
+            }
+            
+            loadData();
+        </script>
+    </div>
+</body>
+
+</html>
+
+<!-- function sortByModel(){
+    arr.sort(function(a, b){
+        return a.carModel.toLowerCase() > b.carModel.toLowerCase() ? 1 : -1;
+    });
+    console.log(arr);
+};
+
+function sortByYear(){
+    arr.sort(function(a, b){
+        return a.carYear - b.carYear ;
+    });
+    console.log(arr);
+}; -->

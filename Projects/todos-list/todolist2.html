@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDos List(2)</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        tr #title , tr #description {
+            word-break: break-all;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container my-4" id="container">
+        <h2 class="text-center">TODOs List</h2>
+        <div class="form-group mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" class="form-control" id="title">
+            <div id="titleHelp" class="form-text">Enter the title of description.</div>
+        </div>
+        <div class="form-group mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea class="form-control" id="description" rows="3"></textarea>
+        </div>
+        <button type="submit" id="submit" class="btn btn-primary">Submit</button>
+        <div id="items" class="my-4">
+            <h2 class="text-center">Your Items</h2>
+            <table class="table">
+                <thead id="thead">
+                    <tr>
+                        <th scope="col">Sr.no</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        function isJson(str) {
+            try {
+                JSON.parse(str);
+            } catch (e) {
+                return false;
+            }
+            return true;
+        }
+
+        function updateAnItem() {
+            let submit = document.getElementById('submit');
+            var todoArray = [];
+            const titleElem = document.getElementById('title');
+            const descriptionElem = document.getElementById('description');
+
+            const tit = titleElem.value;
+            const desc = descriptionElem.value;
+
+            if (tit == '') {
+                alert("enter title");
+                return false;
+            }
+
+            if (desc == '') {
+                alert("enter Description");
+                return false;
+            }
+
+            if (localStorage.getItem('todo-key') == null) {
+                todoArray.push([tit, desc]);
+                if(Array.isArray(todoArray)){
+                    localStorage.setItem('todo-key', JSON.stringify(todoArray));
+                } else {
+                    localStorage.setItem('todo-key', []);
+                }
+            }
+            else {
+                todoArrayStr = localStorage.getItem('todo-key');
+                todoArray =  isJson(todoArrayStr) && JSON.parse(todoArrayStr) || [];
+
+                
+                if(Array.isArray(todoArray)){
+                    todoArray.push([tit, desc]);
+                } else {
+                    todoArray = [];
+                    localStorage.setItem('todo-key', JSON.stringify(todoArray));
+                    todoArray.push([tit, desc]);
+                }
+                if(Array.isArray(todoArray)){
+                    localStorage.setItem('todo-key', JSON.stringify(todoArray));
+                } else {
+                    localStorage.setItem('todo-key', []);
+                }
+            }
+            titleElem.value = '';
+            descriptionElem.value = '';
+            update();
+        };
+        
+        function update() {
+            if (localStorage.getItem('todo-key') == null) {
+                if(Array.isArray(todoArray)){
+                    localStorage.setItem('todo-key', JSON.stringify(todoArray));
+                } else {
+                    localStorage.setItem('todo-key', []);
+                }
+            }
+            else {
+                todoArrayStr =  localStorage.getItem('todo-key');
+                todoArray = isJson(todoArrayStr) && JSON.parse(todoArrayStr);
+            }
+
+            let tbody = document.getElementById('tbody');
+            let str = '';
+            console.log(localStorage.getItem('todo-key'));
+        
+            if(todoArray.length >=1 ) {
+                todoArray.forEach((element, index) => {
+                    str += `
+                        <tr>
+                            <th scope="row">${index + 1}</th>
+                            <td id="title">${element[0]}</td>
+                            <td id="description">${element[1]}</td>
+                            <td><button class="btn btn-sm btn-primary" onclick="deleted(${index})">Delete</button></td>
+                        </tr>`
+                });
+            } else {
+                str +=`
+                    <tr>
+                        <td colspan="4">
+                            <h3>No data in this Item</h3>
+                        </td>
+                    </tr>`
+            }
+            
+            tbody.innerHTML = str;
+        };
+        submit.addEventListener('click', updateAnItem);
+        update();
+
+        function deleted(itemIndex) {
+            console.log("The Array Item is Deleted");
+            todoArrayStr = localStorage.getItem('todo-key');
+            todoArray = JSON.parse(todoArrayStr);
+            // Delete itemIndex
+            todoArray.splice(itemIndex, 1);
+            if(Array.isArray(todoArray)){
+                    localStorage.setItem('todo-key', JSON.stringify(todoArray));
+                } else {
+                    localStorage.setItem('todo-key', []);
+                }
+            update();
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sorting list</title>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+</head>
+<body>
+    <div>
+        <h2>This is the exmaple of sorting List</h2>
+        <p id="demo1"><button>ByName</button></p>
+        <p id="demo2"><button>ByModel</button></p>
+        <p id="demo3"><button>ByYear</button></p>
+    </div>
+    <script>
+        const arr = [
+            {
+                carName : "mustang",
+                carModel : "Ford",
+                carYear : "2020"
+            },
+            
+            {
+                carName : "XC40",
+                carModel : "Volvo",
+                carYear : "2016"
+            },
+            
+            {
+                carName : "CLA",
+                carModel : "Mercedes",
+                carYear : "2017"
+            },
+
+            {
+                carName : "Q3",
+                carModel : "Audi",
+                carYear : "2022"
+            },
+            
+            {
+                carName : "C30",
+                carModel : "Volvo",
+                carYear : "2018"
+            },
+            
+            {
+                carName : "C-MAX",
+                carModel : "Ford",
+                carYear : "2018"
+            },
+            
+            {
+                carName : "sprinter",
+                carModel : "Mercedes",
+                carYear : "2017"
+            },
+            
+            {
+                carName : "XC40",
+                carModel : "Volvo",
+                carYear : "2020"
+            },
+            
+            {
+                carName : "Fiesta",
+                carModel : "Ford",
+                carYear : "2019"
+            },
+            
+            {
+                carName : "S40",
+                carModel : "Volvo",
+                carYear : "2019"
+            },
+            
+            {
+                carName : "GLC",
+                carModel : "Mercedes",
+                carYear : "2021"
+            },
+
+            {
+                carName : "mustang",
+                carModel : "Ford",
+                carYear : "2017"
+            },
+
+            {
+                carName : "C30",
+                carModel : "Volvo",
+                carYear : "2021"
+            },
+            
+            {
+                carName : "Q3",
+                carModel : "Audi",
+                carYear : "2017"
+            },
+            
+            {
+                carName : "S40",
+                carModel : "Volvo",
+                carYear : "2021"
+            },
+            
+            {
+                carName : "Benz",
+                carModel : "Mercedes",
+                carYear : "2017"
+            },
+            
+            {
+                carName : "Q3",
+                carModel : "Audi",
+                carYear : "2019"
+            },
+            
+            {
+                carName : "Fiesta",
+                carModel : "Ford",
+                carYear : "2017"
+            },
+            
+            {
+                carName : "Metris",
+                carModel : "Mercedes",
+                carYear : "2017"
+            },
+            
+            {
+                carName : "GLC",
+                carModel : "Mercedes",
+                carYear : "2019"
+            },
+
+            {
+                carName : "V50",
+                carModel : "Volvo",
+                carYear : "2020"
+            },
+            
+            
+            {
+                carName : "Metris",
+                carModel : "Mercedes",
+                carYear : "2020"
+            },
+            
+            {
+                carName : "XC40",
+                carModel : "Volvo",
+                carYear : "2018"
+            },
+
+            {
+                carName : "Metris",
+                carModel : "Mercedes",
+                carYear : "2021"
+            },
+            
+            {
+                carName : "V50",
+                carModel : "Volvo",
+                carYear : "2017"
+            },
+            
+            {
+                carName : "CLA",
+                carModel : "Mercedes",
+                carYear : "2020"
+            },
+            
+            {
+                carName : "V50",
+                carModel : "Volvo",
+                carYear : "2022"
+            },
+            
+            {
+                carName : "sprinter",
+                carModel : "Mercedes",
+                carYear : "2021"
+            },
+            
+            {
+                carName : "Escape",
+                carModel : "Ford",
+                carYear : "2020"
+            }
+            
+        ];
+        
+        // console.log(arr);
+        
+
+        // function sortByName(){
+        //     arr.sort(function(a , b){
+        //         return a.carName.toLowerCase() > b.carName.toLowerCase() ? 1 : -1;
+        //     });
+        //     console.log(arr);
+        // };
+        
+        // function sortByModel(){
+        //     arr.sort(function(a, b){
+        //         return a.carModel.toLowerCase() > b.carModel.toLowerCase() ? 1 : -1;
+        //     });
+        //     console.log(arr);
+        // };
+
+        // function sortByYear(){
+        //     arr.sort(function(a, b){
+        //         return a.carYear - b.carYear ;
+        //     });
+        //     console.log(arr);
+        // };
+
+
+        //-----------------------sorting using a lodash ------------------------//
+        let txt = _.orderBy(arr , ['carModel' , 'carName' , 'carYear'] , ['asc' , 'asc', 'desc']);
+        console.log(txt);
+        
+    </script>
+</body>
+</html>
