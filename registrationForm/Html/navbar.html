@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation bar</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        img {
+            width: 1521.5px;
+            height: 700px;
+        }
+
+        .stick{
+            position: sticky;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+    <ul class="nav nav-pills py-1 ps-3 bg-info bg-gradient stick">
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="navbar.html">Home</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-dark" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Users</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="regform.html">Create</a></li>
+            <!-- <li><hr class="dropdown-divider"></li> -->
+            <li><a class="dropdown-item" href="regformtable.html">List</a></li>
+          </ul>
+        </li>
+    </ul>
+    <div>
+        <div class="image">
+            <img src="../../images/coming_soon.webp" alt="coming soon..." />
+        </div>
+    </div>
+</body>
+</html>

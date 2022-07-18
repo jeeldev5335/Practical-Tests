@@ -201,17 +201,19 @@ Maximum 10 Number is required</pre>`;
             gender : x,
             language : y,
             about : about,
-            id: lastElement && lastElement.id + 1 || 1
+            id: lastElement && Number(lastElement.id) + 1 || 1
         }; 
         
         if(!oldDataArr) {
             oldDataArr = [];
         }
+        
+        confirm('User Created Successfully...')
         oldDataArr.push(obj);
         localStorage.setItem('user', JSON.stringify(oldDataArr));
         
 
         //For Redirect to other form ------- here we redirect the form to view table 
-        window.location.href= 'regformtable.html';
+        //window.location.href= 'regformtable.html';
     }
 }
